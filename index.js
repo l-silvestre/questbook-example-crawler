@@ -36,8 +36,8 @@ const main = async () => {
     console.log(page.url(), 'after');
     console.log(proposal.i);
     const { proposalText, milestonesText } = await page.evaluate(() => {
-      const proposalText = document.querySelector('.body > div > div > div > div:nth-child(2)').textContent;
-      const milestonesText = document.querySelector('.body > div > div > div > div:nth-child(3)').textContent;
+      const proposalText = document.querySelector('.body > div > div > div > div:nth-child(2)').innerText;
+      const milestonesText = document.querySelector('.body > div > div > div > div:nth-child(3)').innerText;
 
       return { proposalText, milestonesText };
     });
@@ -46,7 +46,7 @@ const main = async () => {
   }
   
 
-  fs.writeFileSync('scraping.json', JSON.stringify(finalScraping, null, 2));
+  fs.writeFileSync('scraping-2.json', JSON.stringify(finalScraping, null, 2));
 
   // current page
   /* const currentProposalText = await page.evaluate(() => {
